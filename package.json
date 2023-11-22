@@ -1,0 +1,14 @@
+{
+  "name": "aulanode01",
+  "version": "1.0.0",
+  "description": "Aula 01 de node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wanderckley Oliveira",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
