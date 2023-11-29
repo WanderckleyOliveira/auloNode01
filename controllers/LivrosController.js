@@ -27,6 +27,30 @@ class LivroController {
             id: id
         })
     }
+
+    static store(req, res) {
+        res.json({
+            nome: req.body.nome,
+            autor: req.body.autor,
+            ano: req.body.ano,
+            id: 3
+        })
+    }
+
+    static update(req, res) {
+        res.json({
+            nome: req.body.nome,
+            autor: req.body.autor,
+            ano: req.body.ano,
+            id: req.params.id
+        })
+    }
+
+    static delete(req, res) {
+        res.json({
+            sucess: true
+        })
+    }
 }
 
 module.exports = LivroController

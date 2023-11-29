@@ -11,6 +11,10 @@ router.get('/sobre', SobreController.index)
 router.get('/pessoal', PessoalController.index)
 router.get('/livros', LivroController.index)
 router.get('/livros/:id', LivroController.show)
+router.post("/livros", LivroController.store)
+router.put('/livros/:id', LivroController.update)
+router.delete('/livros/:id', LivroController.delete)
+
 
 
 module.exports = router;
