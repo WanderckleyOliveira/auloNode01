@@ -1,52 +1,39 @@
+const { livros } = require('../models')
 class LivroController {
-    static index(req, res) {
-        res.json([
-            {
-                nome: "O senhor dos anéis",
-                autor: "J R Tolkien",
-                ano: 1999,
-                id: 1
-            },
-
-            {
-                nome: "Harry Potter",
-                autor: "J R Rowling",
-                ano: 2000,
-                id: 2
-            }
-        ])
+    static async index(req, res) {
+        const meusLivros = await livros.findAll()
+        res.json(meusLivros)
     }
 
 
-    static show(req, res) {
-        const id = req.params.id
-        res.json({
-            nome: "O senhor dos anéis",
-            autor: "J R Tolkien",
-            ano: 1999,
-            id: id
-        })
+    static async show(req, res) {
+        const livro = await livros.findByPk(req.params.id)
+        res.json(livro)
     }
 
-    static store(req, res) {
-        res.json({
+    static async store(req, res) {
+        const livro = await livros.create({
             nome: req.body.nome,
             autor: req.body.autor,
-            ano: req.body.ano,
-            id: 3
+            ano: req.body.ano
         })
+
+        res.json(livro)
     }
 
-    static update(req, res) {
-        res.json({
+    static async update(req, res) {
+        const livro = await livros.findByPk(req.params.id)
+        await livro.update({
             nome: req.body.nome,
-            autor: req.body.autor,
             ano: req.body.ano,
-            id: req.params.id
+            autor: req.body.autor
         })
+        res.json(livro)
     }
 
-    static delete(req, res) {
+    static async delete(req, res) {
+        const livro = await livros.findByPk(req.params.id)
+        livro.destroy()
         res.json({
             sucess: true
         })
